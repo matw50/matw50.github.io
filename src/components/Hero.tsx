@@ -71,7 +71,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full bg-gold/20 blur-3xl"></div>
               <div className="absolute inset-0 flex items-center justify-center animate-float">
                 <img
-                  src="/lovable-uploads/ff991625-2118-4bff-b438-da6184734610.png"
+                  src="./lovable-uploads/ff991625-2118-4bff-b438-da6184734610.png"
                   alt="Sommify App Icon"
                   className="w-3/4 h-3/4 object-contain relative z-10"
                 />
