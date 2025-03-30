@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,7 +12,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <div className="flex items-center justify-center md:justify-start space-x-2">
               <img
-                src="/lovable-uploads/4c32ddf5-62a6-4870-bfc5-a7e09b554e08.png"
+                src="lovable-uploads/4c32ddf5-62a6-4870-bfc5-a7e09b554e08.png"
                 alt="Spectrify Logo"
                 className="w-8 h-8 object-contain"
               />
@@ -27,13 +28,13 @@ const Footer = () => {
               <h4 className="text-white font-medium mb-3">Company</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#" className="hover:text-gold transition-colors">About Us</a>
+                  <a href="#/about" className="hover:text-gold transition-colors">About Us</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-gold transition-colors">Careers</a>
+                  <a href="#/" className="hover:text-gold transition-colors">Careers</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-gold transition-colors">Contact</a>
+                  <a href="#/contact" className="hover:text-gold transition-colors">Contact</a>
                 </li>
               </ul>
             </div>
@@ -42,13 +43,13 @@ const Footer = () => {
               <h4 className="text-white font-medium mb-3">Products</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#" className="hover:text-gold transition-colors">Sommify</a>
+                  <a href="#/" className="hover:text-gold transition-colors">Sommify</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-gold transition-colors">Our Portfolio</a>
+                  <a href="#/portfolio" className="hover:text-gold transition-colors">Our Portfolio</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-gold transition-colors">Roadmap</a>
+                  <a href="#/roadmap" className="hover:text-gold transition-colors">Roadmap</a>
                 </li>
               </ul>
             </div>
@@ -57,13 +58,13 @@ const Footer = () => {
               <h4 className="text-white font-medium mb-3">Connect</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#" className="hover:text-gold transition-colors">Twitter</a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Twitter</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-gold transition-colors">Instagram</a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Instagram</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-gold transition-colors">LinkedIn</a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">LinkedIn</a>
                 </li>
               </ul>
             </div>
@@ -76,13 +77,13 @@ const Footer = () => {
           </p>
           
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-xs hover:text-gold transition-colors">
+            <a href="#/privacy" className="text-xs hover:text-gold transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-xs hover:text-gold transition-colors">
+            <a href="#/terms" className="text-xs hover:text-gold transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="text-xs hover:text-gold transition-colors">
+            <a href="#/cookies" className="text-xs hover:text-gold transition-colors">
               Cookies
             </a>
           </div>

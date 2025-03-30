@@ -1,6 +1,6 @@
 
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const NotFound = () => {
   const location = useLocation();
@@ -27,12 +27,12 @@ const NotFound = () => {
         <p className="text-white/70 mb-8">
           The page you are looking for doesn't exist or has been moved.
         </p>
-        <a
-          href="/"
+        <Link
+          to="/"
           className="inline-block px-6 py-3 bg-gold text-dark font-medium rounded-full hover:bg-gold-light transition-all duration-300 shadow-lg hover:shadow-gold/20"
         >
           Return Home
-        </a>
+        </Link>
       </div>
     </div>
   );
