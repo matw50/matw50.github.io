@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,11 +20,15 @@ const Header = () => {
     };
   }, [scrolled]);
 
-  // Function to scroll to sections - simplified for reliability
-  const scrollToSection = (sectionId: string) => {
-    console.log(`Attempting to scroll to #${sectionId}`);
+  // Function to handle navigation with HashRouter
+  const handleNavigation = (sectionId: string) => {
+    console.log(`Navigation to section: ${sectionId}`);
     
-    // Add a small delay to ensure everything is rendered
+    // With HashRouter, we need to navigate to /#sectionId format
+    // This will update the URL without causing a page reload
+    navigate(`/#${sectionId}`);
+    
+    // Then manually scroll to the element
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -51,19 +57,19 @@ const Header = () => {
         </div>
         <nav className="hidden md:flex items-center space-x-8">
           <button
-            onClick={() => scrollToSection("features")}
+            onClick={() => handleNavigation("features")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Features
           </button>
           <button
-            onClick={() => scrollToSection("about")}
+            onClick={() => handleNavigation("about")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             About
           </button>
           <button
-            onClick={() => scrollToSection("signup")}
+            onClick={() => handleNavigation("signup")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Sign Up

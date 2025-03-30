@@ -41,6 +41,16 @@ const ScrollToTop = () => {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
           console.error(`Element not found for #${id}`);
+          
+          // Special case for features, about, signup that might be missing the #
+          if (['features', 'about', 'signup'].includes(id)) {
+            // Try without the # as well (direct element ID)
+            const directElement = document.getElementById(id);
+            if (directElement) {
+              console.log(`Found element #${id} directly, scrolling...`);
+              directElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
         }
       } catch (error) {
         console.error('Error scrolling to element:', error);
@@ -64,11 +74,16 @@ const App = () => {
       console.log(`Initial page load with hash: ${hash}`);
       // Handle initial hash on page load
       setTimeout(() => {
-        const id = hash.replace('#', '');
+        // Need to handle both formats: #section and ##section
+        let id = hash.replace(/^#+/, ''); // Remove all leading # characters
+        
+        console.log(`Looking for element with ID: ${id}`);
         const element = document.getElementById(id);
         if (element) {
           console.log(`Initial scroll to: ${id}`);
           element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          console.log(`Element with ID ${id} not found on initial load`);
         }
       }, 1000);
     }
@@ -85,8 +100,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
+            {/* The catch-all route should render the Index component and then scroll to the section */}
+            <Route path="*" element={<Index />} />
           </Routes>
         </HashRouter>
       </TooltipProvider>
