@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Set base to '/' for correct path resolution
+  // Since we're using HashRouter, base can be '/'
   base: '/',
   server: {
     host: "::",

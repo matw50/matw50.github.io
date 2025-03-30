@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
@@ -20,6 +19,14 @@ const Header = () => {
     };
   }, [scrolled]);
 
+  // Function to scroll to sections
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header
       className={cn(
@@ -36,24 +43,24 @@ const Header = () => {
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-8">
-          <a
-            href="#features"
+          <button
+            onClick={() => scrollToSection("features")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Features
-          </a>
-          <a
-            href="#about"
+          </button>
+          <button
+            onClick={() => scrollToSection("about")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             About
-          </a>
-          <a
-            href="#signup"
+          </button>
+          <button
+            onClick={() => scrollToSection("signup")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Sign Up
-          </a>
+          </button>
         </nav>
         <div className="md:hidden">
           <button className="text-white">
