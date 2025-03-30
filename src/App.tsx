@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -42,21 +42,31 @@ const InitialHashHandler = () => {
   return null;
 };
 
+// Get the correct base URL for GitHub Pages (empty for HashRouter)
+const basename = process.env.NODE_ENV === 'production' ? '' : '';
+
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {/* Using HashRouter for GitHub Pages compatibility */}
-        <HashRouter>
+        {/* Using BrowserRouter with direct hash links */}
+        <BrowserRouter basename={basename}>
           <InitialHashHandler />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            
+            {/* Special routes for hash navigation that just redirect to the main page with hash */}
+            <Route path="/features" element={<Navigate to="/#features" replace />} />
+            <Route path="/about" element={<Navigate to="/#about" replace />} />
+            <Route path="/signup" element={<Navigate to="/#signup" replace />} />
+            
+            {/* All other routes show 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </HashRouter>
+        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
