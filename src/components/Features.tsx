@@ -1,5 +1,4 @@
-
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface FeatureCardProps {
   title: string;
@@ -58,35 +57,93 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 };
 
 const Features = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Log component lifecycle and visibility state
+  console.log('FEATURES: Component rendering with isVisible =', isVisible);
+
   useEffect(() => {
+    console.log('FEATURES: Component mounted');
+    
+    // Check if this section is targeted by hash
+    const isTargetedByHash = window.location.hash.includes('features');
+    console.log(`FEATURES: Current hash is ${window.location.hash}, isTargetedByHash = ${isTargetedByHash}`);
+    
+    if (isTargetedByHash) {
+      console.log(`FEATURES: Section is targeted by hash, setting visible immediately`);
+      setIsVisible(true);
+      
+      // Force the element to be visible right away
+      setTimeout(() => {
+        const element = document.getElementById('features');
+        if (element) {
+          console.log('FEATURES: Found features element, ensuring visibility');
+          element.classList.remove('opacity-0');
+          element.classList.add('opacity-100');
+          
+          // Log element details
+          console.log('FEATURES: Element details:', {
+            id: element.id,
+            className: element.className,
+            isVisible: element.offsetWidth > 0 && element.offsetHeight > 0,
+            offsetTop: element.offsetTop,
+            offsetHeight: element.offsetHeight
+          });
+        } else {
+          console.error('FEATURES: Could not find features element to ensure visibility');
+        }
+      }, 0);
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
+        console.log(`FEATURES: Intersection observer triggered, isIntersecting = ${entry.isIntersecting}`);
         if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100');
-          observer.unobserve(entry.target);
+          console.log('FEATURES: Element is now intersecting, setting visible');
+          setIsVisible(true);
         }
       },
       { threshold: 0.1 }
     );
-    
+
     if (sectionRef.current) {
+      console.log('FEATURES: Observing section ref');
       observer.observe(sectionRef.current);
+    } else {
+      console.warn('FEATURES: Section ref is null, cannot observe');
     }
-    
+
     return () => {
+      console.log('FEATURES: Component unmounting, cleaning up observer');
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
 
+  // Log when the visibility state changes
+  useEffect(() => {
+    console.log(`FEATURES: Visibility changed to ${isVisible}`);
+    
+    // Debug: check if the element exists and log its details
+    const element = document.getElementById('features');
+    if (element) {
+      console.log('FEATURES: Features element details after visibility change:', {
+        id: element.id,
+        className: element.className,
+        isVisible: element.offsetWidth > 0 && element.offsetHeight > 0
+      });
+    }
+  }, [isVisible]);
+
   return (
     <section
       id="features"
       ref={sectionRef}
-      className="relative py-20 px-4 opacity-0 transition-opacity duration-1000"
+      className={`relative py-20 px-4 transition-opacity duration-1000 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
+      }`}
       style={{
         background: "linear-gradient(to bottom, #1A1A1A 0%, #121212 100%)"
       }}

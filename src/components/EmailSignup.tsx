@@ -1,5 +1,4 @@
-
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 const EmailSignup = () => {
   const [email, setEmail] = useState("");
@@ -7,6 +6,41 @@ const EmailSignup = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
+
+  // Add logging for component lifecycle
+  console.log('SIGNUP: Component rendering');
+
+  useEffect(() => {
+    console.log('SIGNUP: Component mounted');
+    
+    // Check if this section is targeted by hash
+    const isTargetedByHash = window.location.hash.includes('signup');
+    console.log(`SIGNUP: Current hash is ${window.location.hash}, isTargetedByHash = ${isTargetedByHash}`);
+    
+    if (isTargetedByHash) {
+      console.log('SIGNUP: Section is targeted by hash');
+      
+      // Log whether the element exists
+      const element = document.getElementById('signup');
+      if (element) {
+        console.log('SIGNUP: Found signup element, details:', {
+          id: element.id,
+          className: element.className,
+          isVisible: element.offsetWidth > 0 && element.offsetHeight > 0,
+          offsetTop: element.offsetTop,
+          offsetHeight: element.offsetHeight
+        });
+      } else {
+        console.error('SIGNUP: Could not find signup element even though it should exist');
+      }
+    }
+    
+    // Log all elements with IDs for debugging
+    console.log('SIGNUP: All elements with IDs at EmailSignup mount time:');
+    document.querySelectorAll('[id]').forEach(el => {
+      console.log(`- Element with ID: ${el.id}`);
+    });
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

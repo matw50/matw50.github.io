@@ -5,6 +5,14 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    console.log("Header component mounted");
+    
+    // Log the IDs of all elements in the DOM for debugging
+    console.log("Available elements with IDs on page load:");
+    document.querySelectorAll('[id]').forEach(el => {
+      console.log(`Found element with ID: ${el.id}`);
+    });
+    
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
       if (isScrolled !== scrolled) {
@@ -22,17 +30,42 @@ const Header = () => {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault(); // Prevent default anchor behavior
     
-    console.log(`Attempting direct scroll to #${id}`);
+    console.log(`HEADER: Anchor link clicked for #${id}`);
+    console.log(`HEADER: Current URL before click: ${window.location.href}`);
+    
+    // Check if the element exists before attempting to scroll
+    const allIds = Array.from(document.querySelectorAll('[id]')).map(el => el.id);
+    console.log(`HEADER: All IDs available in DOM:`, allIds);
+    
     const element = document.getElementById(id);
     
     if (element) {
-      console.log(`Element #${id} found, scrolling directly`);
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      console.log(`HEADER: Element #${id} found, scrolling directly`);
+      console.log(`HEADER: Element details:`, {
+        offsetTop: element.offsetTop,
+        offsetHeight: element.offsetHeight,
+        isVisible: element.offsetWidth > 0 && element.offsetHeight > 0
+      });
       
-      // Update URL without triggering navigation
-      window.history.pushState(null, '', `#${id}`);
+      // Ensure element is visible before scrolling (especially for animated elements)
+      if (element.classList.contains('opacity-0')) {
+        console.log(`HEADER: Element #${id} has opacity-0 class, making it visible first`);
+        element.classList.remove('opacity-0');
+        element.classList.add('opacity-100');
+      }
+      
+      // Scroll with a slight delay to ensure any class changes take effect
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        console.log(`HEADER: Scrolled to element #${id}`);
+        
+        // Update URL without triggering navigation
+        window.history.pushState(null, '', `#${id}`);
+        console.log(`HEADER: Updated URL to ${window.location.href}`);
+      }, 100);
     } else {
-      console.error(`Element with id="${id}" not found`);
+      console.error(`HEADER: Element with id="${id}" not found`);
+      console.log(`HEADER: Document body HTML:`, document.body.innerHTML.substring(0, 500) + '...');
     }
   };
 
