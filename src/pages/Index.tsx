@@ -31,7 +31,7 @@ const Index = () => {
                   <div className="relative overflow-hidden rounded-lg">
                     <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 to-transparent opacity-70"></div>
                     <img
-                      src="./lovable-uploads/4c32ddf5-62a6-4870-bfc5-a7e09b554e08.png"
+                      src="lovable-uploads/4c32ddf5-62a6-4870-bfc5-a7e09b554e08.png"
                       alt="Spectrify Logo"
                       className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
                     />
