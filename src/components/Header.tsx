@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,13 +18,20 @@ const Header = () => {
     };
   }, [scrolled]);
 
-  // Function to scroll to sections
+  // Function to scroll to sections - simplified for reliability
   const scrollToSection = (sectionId: string) => {
-    // Create the element ID to look for
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    console.log(`Attempting to scroll to #${sectionId}`);
+    
+    // Add a small delay to ensure everything is rendered
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        console.log(`Found element #${sectionId}, scrolling...`);
+        element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.log(`Element #${sectionId} not found`);
+      }
+    }, 100);
   };
 
   return (
@@ -45,36 +50,24 @@ const Header = () => {
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-8">
-          <Link
-            to="/#features"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("features");
-            }}
+          <button
+            onClick={() => scrollToSection("features")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Features
-          </Link>
-          <Link
-            to="/#about"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("about");
-            }}
+          </button>
+          <button
+            onClick={() => scrollToSection("about")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             About
-          </Link>
-          <Link
-            to="/#signup"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("signup");
-            }}
+          </button>
+          <button
+            onClick={() => scrollToSection("signup")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Sign Up
-          </Link>
+          </button>
         </nav>
         <div className="md:hidden">
           <button className="text-white">

@@ -15,19 +15,39 @@ const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // If there's a hash in the URL, scroll to that element after a short delay
-    // to ensure everything has rendered properly
-    if (hash) {
-      setTimeout(() => {
-        const element = document.getElementById(hash.substring(1));
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    } else {
-      // Otherwise, scroll to the top of the page
+    // Log the current URL information for debugging
+    console.log('Current pathname:', pathname);
+    console.log('Current hash:', hash);
+    
+    // First make sure we scroll to the top if there's no hash
+    if (!hash) {
+      console.log('No hash detected, scrolling to top');
       window.scrollTo(0, 0);
+      return;
     }
+    
+    // If there's a hash, handle the scrolling with a delay
+    console.log(`Detected hash: ${hash}, will attempt to scroll`);
+    
+    // Clean the hash (remove the # character)
+    const id = hash.replace('#', '');
+    
+    // Use a longer delay to ensure the page is fully rendered
+    const scrollTimer = setTimeout(() => {
+      try {
+        const element = document.getElementById(id);
+        if (element) {
+          console.log(`Element found for #${id}, scrolling to it`);
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          console.error(`Element not found for #${id}`);
+        }
+      } catch (error) {
+        console.error('Error scrolling to element:', error);
+      }
+    }, 500); // Increased delay for more reliable scrolling
+    
+    return () => clearTimeout(scrollTimer);
   }, [pathname, hash]);
 
   return null;
@@ -36,23 +56,42 @@ const ScrollToTop = () => {
 // Get the base URL from the environment or use empty string as default
 const basename = import.meta.env.BASE_URL || '/';
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      {/* Using HashRouter for GitHub Pages compatibility */}
-      <HashRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </HashRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  // Check for hash in URL on initial load
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      console.log(`Initial page load with hash: ${hash}`);
+      // Handle initial hash on page load
+      setTimeout(() => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          console.log(`Initial scroll to: ${id}`);
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 1000);
+    }
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        {/* Using HashRouter for GitHub Pages compatibility */}
+        <HashRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </HashRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
