@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,24 +18,22 @@ const Header = () => {
     };
   }, [scrolled]);
 
-  // Function to handle navigation with HashRouter
-  const handleNavigation = (sectionId: string) => {
-    console.log(`Navigation to section: ${sectionId}`);
+  // Function for smooth scrolling without router involvement
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault(); // Prevent default anchor behavior
     
-    // IMPORTANT: With HashRouter, we navigate to "#sectionId" (without the leading slash)
-    // The correct format is "#sectionId" not "/#sectionId"
-    navigate(`#${sectionId}`);
+    console.log(`Attempting direct scroll to #${id}`);
+    const element = document.getElementById(id);
     
-    // Then manually scroll to the element
-    setTimeout(() => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        console.log(`Found element #${sectionId}, scrolling...`);
-        element.scrollIntoView({ behavior: "smooth" });
-      } else {
-        console.log(`Element #${sectionId} not found`);
-      }
-    }, 100);
+    if (element) {
+      console.log(`Element #${id} found, scrolling directly`);
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      
+      // Update URL without triggering navigation
+      window.history.pushState(null, '', `#${id}`);
+    } else {
+      console.error(`Element with id="${id}" not found`);
+    }
   };
 
   return (
@@ -56,24 +52,27 @@ const Header = () => {
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-8">
-          <button
-            onClick={() => handleNavigation("features")}
+          <a
+            href="#features"
+            onClick={(e) => scrollToSection(e, "features")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Features
-          </button>
-          <button
-            onClick={() => handleNavigation("about")}
+          </a>
+          <a
+            href="#about"
+            onClick={(e) => scrollToSection(e, "about")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             About
-          </button>
-          <button
-            onClick={() => handleNavigation("signup")}
+          </a>
+          <a
+            href="#signup"
+            onClick={(e) => scrollToSection(e, "signup")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Sign Up
-          </button>
+          </a>
         </nav>
         <div className="md:hidden">
           <button className="text-white">
