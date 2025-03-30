@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,7 @@ const Header = () => {
 
   // Function to scroll to sections
   const scrollToSection = (sectionId: string) => {
+    // Create the element ID to look for
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -43,24 +45,36 @@ const Header = () => {
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-8">
-          <button
-            onClick={() => scrollToSection("features")}
+          <Link
+            to="/#features"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("features");
+            }}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Features
-          </button>
-          <button
-            onClick={() => scrollToSection("about")}
+          </Link>
+          <Link
+            to="/#about"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("about");
+            }}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             About
-          </button>
-          <button
-            onClick={() => scrollToSection("signup")}
+          </Link>
+          <Link
+            to="/#signup"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("signup");
+            }}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Sign Up
-          </button>
+          </Link>
         </nav>
         <div className="md:hidden">
           <button className="text-white">

@@ -5,8 +5,16 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Since we're using HashRouter, base can be '/'
+  // For GitHub Pages, setting base to '/' since we're using HashRouter
+  // This ensures assets are loaded correctly
   base: '/',
+  build: {
+    // Ensure paths are properly rewritten for GitHub Pages
+    outDir: 'dist',
+    emptyOutDir: true,
+    // Generate sourcemaps for debugging
+    sourcemap: mode === 'development',
+  },
   server: {
     host: "::",
     port: 8080,
