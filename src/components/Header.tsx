@@ -24,9 +24,9 @@ const Header = () => {
   const handleNavigation = (sectionId: string) => {
     console.log(`Navigation to section: ${sectionId}`);
     
-    // With HashRouter, we need to navigate to /#sectionId format
-    // This will update the URL without causing a page reload
-    navigate(`/#${sectionId}`);
+    // IMPORTANT: With HashRouter, we navigate to "#sectionId" (without the leading slash)
+    // The correct format is "#sectionId" not "/#sectionId"
+    navigate(`#${sectionId}`);
     
     // Then manually scroll to the element
     setTimeout(() => {
