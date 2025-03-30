@@ -28,13 +28,13 @@ const Footer = () => {
               <h4 className="text-white font-medium mb-3">Company</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#/about" className="hover:text-gold transition-colors">About Us</a>
+                  <Link to="/about" className="hover:text-gold transition-colors">About Us</Link>
                 </li>
                 <li>
-                  <a href="#/" className="hover:text-gold transition-colors">Careers</a>
+                  <Link to="/" className="hover:text-gold transition-colors">Careers</Link>
                 </li>
                 <li>
-                  <a href="#/contact" className="hover:text-gold transition-colors">Contact</a>
+                  <Link to="/contact" className="hover:text-gold transition-colors">Contact</Link>
                 </li>
               </ul>
             </div>
@@ -43,13 +43,13 @@ const Footer = () => {
               <h4 className="text-white font-medium mb-3">Products</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#/" className="hover:text-gold transition-colors">Sommify</a>
+                  <Link to="/" className="hover:text-gold transition-colors">Sommify</Link>
                 </li>
                 <li>
-                  <a href="#/portfolio" className="hover:text-gold transition-colors">Our Portfolio</a>
+                  <Link to="/portfolio" className="hover:text-gold transition-colors">Our Portfolio</Link>
                 </li>
                 <li>
-                  <a href="#/roadmap" className="hover:text-gold transition-colors">Roadmap</a>
+                  <Link to="/roadmap" className="hover:text-gold transition-colors">Roadmap</Link>
                 </li>
               </ul>
             </div>
@@ -77,15 +77,15 @@ const Footer = () => {
           </p>
           
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#/privacy" className="text-xs hover:text-gold transition-colors">
+            <Link to="/privacy" className="text-xs hover:text-gold transition-colors">
               Privacy Policy
-            </a>
-            <a href="#/terms" className="text-xs hover:text-gold transition-colors">
+            </Link>
+            <Link to="/terms" className="text-xs hover:text-gold transition-colors">
               Terms of Service
-            </a>
-            <a href="#/cookies" className="text-xs hover:text-gold transition-colors">
+            </Link>
+            <Link to="/cookies" className="text-xs hover:text-gold transition-colors">
               Cookies
-            </a>
+            </Link>
           </div>
         </div>
       </div>
