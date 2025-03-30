@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
   base: '',
   build: {
     // Ensure paths are properly rewritten for GitHub Pages
-    outDir: 'dist',
+    outDir: 'docs',
     emptyOutDir: true,
     // Generate sourcemaps for debugging
     sourcemap: mode === 'development',
