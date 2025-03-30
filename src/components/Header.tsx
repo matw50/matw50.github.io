@@ -26,46 +26,12 @@ const Header = () => {
     };
   }, [scrolled]);
 
-  // Function for smooth scrolling without router involvement
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault(); // Prevent default anchor behavior
-    
-    console.log(`HEADER: Anchor link clicked for #${id}`);
-    console.log(`HEADER: Current URL before click: ${window.location.href}`);
-    
-    // Check if the element exists before attempting to scroll
-    const allIds = Array.from(document.querySelectorAll('[id]')).map(el => el.id);
-    console.log(`HEADER: All IDs available in DOM:`, allIds);
-    
+  // Simplified scroll function that doesn't use SPA routing at all
+  const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
     const element = document.getElementById(id);
-    
     if (element) {
-      console.log(`HEADER: Element #${id} found, scrolling directly`);
-      console.log(`HEADER: Element details:`, {
-        offsetTop: element.offsetTop,
-        offsetHeight: element.offsetHeight,
-        isVisible: element.offsetWidth > 0 && element.offsetHeight > 0
-      });
-      
-      // Ensure element is visible before scrolling (especially for animated elements)
-      if (element.classList.contains('opacity-0')) {
-        console.log(`HEADER: Element #${id} has opacity-0 class, making it visible first`);
-        element.classList.remove('opacity-0');
-        element.classList.add('opacity-100');
-      }
-      
-      // Scroll with a slight delay to ensure any class changes take effect
-      setTimeout(() => {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        console.log(`HEADER: Scrolled to element #${id}`);
-        
-        // Update URL without triggering navigation
-        window.history.pushState(null, '', `#${id}`);
-        console.log(`HEADER: Updated URL to ${window.location.href}`);
-      }, 100);
-    } else {
-      console.error(`HEADER: Element with id="${id}" not found`);
-      console.log(`HEADER: Document body HTML:`, document.body.innerHTML.substring(0, 500) + '...');
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -85,23 +51,24 @@ const Header = () => {
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-8">
+          {/* Use regular hash links with smooth scroll handlers */}
           <a
             href="#features"
-            onClick={(e) => scrollToSection(e, "features")}
+            onClick={(e) => smoothScroll(e, "features")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Features
           </a>
           <a
             href="#about"
-            onClick={(e) => scrollToSection(e, "about")}
+            onClick={(e) => smoothScroll(e, "about")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             About
           </a>
           <a
             href="#signup"
-            onClick={(e) => scrollToSection(e, "signup")}
+            onClick={(e) => smoothScroll(e, "signup")}
             className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
           >
             Sign Up

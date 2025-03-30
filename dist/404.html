@@ -3,33 +3,36 @@
 <head>
   <meta charset="utf-8">
   <title>Redirecting...</title>
+  <!-- Add meta refresh as a fallback -->
+  <meta http-equiv="refresh" content="0;url=/" />
   <script>
-    // Single Page Apps for GitHub Pages
-    // MIT License
-    // https://github.com/rafgraph/spa-github-pages
-    // This script takes the current URL and converts the path and query
-    // string into just a query string, and then redirects to the root path
-    // with that query string attached
-    var pathSegmentsToKeep = 0;
-
-    var l = window.location;
-    var origin = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '');
-    var redirect = origin;
-    
-    // Handle both path-based and hash-based routing
-    if (l.pathname.indexOf('/signup') !== -1) {
-      redirect = origin + '/#signup';
-    } else if (l.pathname.indexOf('/features') !== -1) {
-      redirect = origin + '/#features';
-    } else if (l.pathname.indexOf('/about') !== -1) {
-      redirect = origin + '/#about';
-    } else {
-      // For other paths, keep the hash if there is one
-      redirect = origin + '/' + (l.hash ? l.hash : '');
-    }
-    
-    console.log('Redirecting from', l.href, 'to', redirect);
-    window.location.replace(redirect);
+    // Single Page Apps for GitHub Pages redirect script
+    (function() {
+      // Get current location
+      var location = window.location;
+      var pathname = location.pathname.toLowerCase();
+      var origin = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
+      
+      // Define direct mappings for common paths
+      var redirects = {
+        '/features': '/#features',
+        '/about': '/#about',
+        '/signup': '/#signup'
+      };
+      
+      // Look for direct matches first
+      for (var path in redirects) {
+        if (pathname === path || pathname.indexOf(path) !== -1) {
+          console.log('404 redirecting from', pathname, 'to', redirects[path]);
+          window.location.replace(origin + redirects[path]);
+          return;
+        }
+      }
+      
+      // If no direct match, redirect to home
+      console.log('404 redirecting to home page');
+      window.location.replace(origin);
+    })();
   </script>
 </head>
 <body>
