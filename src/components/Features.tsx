@@ -155,7 +155,7 @@ const Features = () => {
       <div className="max-w-7xl mx-auto z-10 relative">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-playfair mb-4 opacity-0 animate-fade-in">
-            <span className="golden-text">Sophisticated</span> Features
+            <span className="golden-text">Sophisticated CHANGED</span> Features
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto opacity-0 animate-fade-in delay-1">
             Sommify combines cutting-edge technology with an elegant user experience to transform how you discover and enjoy wine.

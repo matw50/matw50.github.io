@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 const Index = () => {
   useEffect(() => {
     // Update document title
-    document.title = "Sommify by Spectrify - Coming Soon";
+    document.title = "Sommify by Spectrify - Coming Soon CHANGED";
   }, []);
 
   return (
@@ -40,6 +40,10 @@ const Index = () => {
               </div>
             </div>
             
+            <div style={{fontSize: '40px', color: 'red'}}>
+  TEST BUILD {new Date().toISOString()}
+</div>
+
             <div className="text-center md:text-left order-1 md:order-2">
               <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-gold/10 text-gold border border-gold/20 mb-4">
                 About Spectrify
