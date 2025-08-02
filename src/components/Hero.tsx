@@ -47,8 +47,8 @@ const Hero = () => {
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold font-playfair opacity-0 animate-fade-in delay-1">
-              <span className="block">Introducing BLAH</span>
-              <span className="golden-text">Sommify BLAH</span>
+              <span className="block">Introducing</span>
+              <span className="golden-text">Sommify</span>
             </h1>
             
             <p className="text-lg md:text-xl text-white/80 max-w-md mx-auto md:mx-0 opacity-0 animate-fade-in delay-2">

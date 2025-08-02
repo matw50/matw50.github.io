@@ -20,9 +20,18 @@
     <link rel="apple-touch-icon" href="./assets/ff991625-2118-4bff-b438-da6184734610-ht0b3ft9-ht0b3ft9-ht0b3ft9-ht0b3ft9-ht0b3ft9-ht0b3ft9-ht0b3ft9-ht0b3ft9-ht0b3ft9-ht0b3ft9-ht0b3ft9-ht0b3ft9.png" />
     <script type="module" crossorigin src="./assets/index-Bs5rGQhp.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-DysQgzRC.css">
+    
+    <!-- GitHub Pages SPA redirect script -->
+    <script>
+      // Redirect to home page with the path as a hash
+      var pathSegments = location.pathname.slice(1).split('/');
+      if (pathSegments.length > 0 && pathSegments[0] !== '') {
+        location.replace(location.origin + '/#' + pathSegments.join('/'));
+      }
+    </script>
   </head>
 
   <body>
     <div id="root"></div>
   </body>
-</html>
+</html> 

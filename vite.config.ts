@@ -2,6 +2,37 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
+import fs from 'fs';
+
+// Plugin to create 404.html for GitHub Pages SPA support
+const githubPages404Plugin = () => ({
+  name: 'github-pages-404',
+  writeBundle() {
+    const outDir = 'docs';
+    const indexPath = path.join(outDir, 'index.html');
+    const notFoundPath = path.join(outDir, '404.html');
+    
+    if (fs.existsSync(indexPath)) {
+      let content = fs.readFileSync(indexPath, 'utf-8');
+      
+      // Add the GitHub Pages SPA redirect script before closing head tag
+      const redirectScript = `
+    <!-- GitHub Pages SPA redirect script -->
+    <script>
+      // Redirect to home page with the path as a hash
+      var pathSegments = location.pathname.slice(1).split('/');
+      if (pathSegments.length > 0 && pathSegments[0] !== '') {
+        location.replace(location.origin + '/#' + pathSegments.join('/'));
+      }
+    </script>
+  </head>`;
+      
+      content = content.replace('</head>', redirectScript);
+      fs.writeFileSync(notFoundPath, content);
+      console.log('Created 404.html for GitHub Pages SPA support');
+    }
+  }
+});
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -22,6 +53,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' &&
     componentTagger(),
+    githubPages404Plugin(),
   ].filter(Boolean),
   resolve: {
     alias: {

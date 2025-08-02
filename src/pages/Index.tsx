@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -40,9 +39,7 @@ const Index = () => {
               </div>
             </div>
             
-            <div style={{fontSize: '40px', color: 'red'}}>
-  TEST BUILD {new Date().toISOString()}
-</div>
+
 
             <div className="text-center md:text-left order-1 md:order-2">
               <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-gold/10 text-gold border border-gold/20 mb-4">
