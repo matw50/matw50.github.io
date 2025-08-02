@@ -11,6 +11,13 @@ const githubPages404Plugin = () => ({
     const outDir = 'docs';
     const indexPath = path.join(outDir, 'index.html');
     const notFoundPath = path.join(outDir, '404.html');
+    const cnamePath = path.join(outDir, 'CNAME');
+    
+    // Copy CNAME file for custom domain
+    if (fs.existsSync('CNAME')) {
+      fs.copyFileSync('CNAME', cnamePath);
+      console.log('Copied CNAME file for custom domain');
+    }
     
     if (fs.existsSync(indexPath)) {
       let content = fs.readFileSync(indexPath, 'utf-8');
