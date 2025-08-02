@@ -17,11 +17,12 @@ const githubPages404Plugin = () => ({
       
       // Add the GitHub Pages SPA redirect script before closing head tag
       const redirectScript = `
-    <!-- GitHub Pages SPA redirect script -->
+    <!-- GitHub Pages SPA redirect script for custom domain -->
     <script>
       // Redirect to home page with the path as a hash
       var pathSegments = location.pathname.slice(1).split('/');
       if (pathSegments.length > 0 && pathSegments[0] !== '') {
+        // Use the current origin (works for both custom domain and github.io)
         location.replace(location.origin + '/#' + pathSegments.join('/'));
       }
     </script>
