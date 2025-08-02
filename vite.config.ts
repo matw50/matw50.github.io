@@ -19,6 +19,26 @@ const githubPages404Plugin = () => ({
       console.log('Copied CNAME file for custom domain');
     }
     
+    // Copy lovable-uploads directory to docs for GitHub Pages
+    const uploadsSourceDir = 'lovable-uploads';
+    const uploadsDestDir = path.join(outDir, 'lovable-uploads');
+    
+    if (fs.existsSync(uploadsSourceDir)) {
+      if (!fs.existsSync(uploadsDestDir)) {
+        fs.mkdirSync(uploadsDestDir, { recursive: true });
+      }
+      
+      const files = fs.readdirSync(uploadsSourceDir);
+      files.forEach(file => {
+        const sourceFile = path.join(uploadsSourceDir, file);
+        const destFile = path.join(uploadsDestDir, file);
+        if (fs.statSync(sourceFile).isFile()) {
+          fs.copyFileSync(sourceFile, destFile);
+        }
+      });
+      console.log('Copied lovable-uploads directory for static assets');
+    }
+    
     if (fs.existsSync(indexPath)) {
       let content = fs.readFileSync(indexPath, 'utf-8');
       
