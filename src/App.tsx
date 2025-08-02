@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -129,8 +129,8 @@ const InitialHashHandler = () => {
   return null;
 };
 
-// Get the correct base URL for GitHub Pages (empty for HashRouter)
-const basename = process.env.NODE_ENV === 'production' ? '' : '';
+// HashRouter doesn't need a basename for GitHub Pages
+const basename = '';
 
 const App = () => {
   useEffect(() => {
@@ -145,8 +145,8 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {/* Using BrowserRouter with direct hash links */}
-        <BrowserRouter basename={basename}>
+        {/* Using HashRouter for GitHub Pages compatibility */}
+        <HashRouter basename={basename}>
           <RouteLogger />
           <InitialHashHandler />
           <Routes>
@@ -161,7 +161,7 @@ const App = () => {
             {/* All other routes show 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
