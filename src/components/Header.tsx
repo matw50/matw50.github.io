@@ -73,6 +73,12 @@ const Header = () => {
           >
             Sign Up
           </a>
+          <a
+            href="/support"
+            className="text-sm text-white/80 hover:text-gold transition-colors duration-200"
+          >
+            Support
+          </a>
         </nav>
         <div className="md:hidden">
           <button className="text-white">

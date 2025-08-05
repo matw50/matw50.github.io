@@ -77,6 +77,9 @@ const Footer = () => {
           </p>
           
           <div className="flex space-x-6 mt-4 md:mt-0">
+            <Link to="/support" className="text-xs hover:text-gold transition-colors">
+              Support
+            </Link>
             <Link to="/privacy" className="text-xs hover:text-gold transition-colors">
               Privacy Policy
             </Link>

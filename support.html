@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Spectrify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(to bottom, #1A1A1A 0%, #121212 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 60px 0 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .header h1 .golden-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #ffffff;
+        }
+        
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .support-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .support-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        
+        .support-card h3 {
+            color: #D4AF37;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .support-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #D4AF37;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #B8941F;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #D4AF37;
+            border: 2px solid #D4AF37;
+        }
+        
+        .btn-outline:hover {
+            background: #D4AF37;
+            color: #000000;
+        }
+        
+        .faq-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .faq-section h2 {
+            text-align: center;
+            color: #D4AF37;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .faq-section h2 .golden-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .faq-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-item h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .faq-item p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+        
+        .contact-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: #D4AF37;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .contact-section h2 .golden-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .contact-item {
+            text-align: center;
+        }
+        
+        .contact-item h3 {
+            color: #D4AF37;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: #D4AF37;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-section, .contact-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><span class="golden-text">Support</span> Center</h1>
+            <p>We're here to help you get the most out of Spectrify. Find answers, get assistance, and connect with our team.</p>
+        </div>
+        
+        <div class="support-grid">
+            <div class="support-card">
+                <h3>📧 Email Support</h3>
+                <p>Get personalized help from our support team. Send us a detailed message and we'll respond within 24 hours.</p>
+                <a href="mailto:support@spectrify.co.uk?subject=Spectrify Support Request" class="btn">Send Email</a>
+            </div>
+            
+            <div class="support-card">
+                <h3>❓ FAQ</h3>
+                <p>Find answers to common questions and quick solutions to typical issues you might encounter.</p>
+                <a href="#faq" class="btn btn-outline">View FAQ</a>
+            </div>
+            
+            <div class="support-card">
+                <h3>📚 Documentation</h3>
+                <p>Access our comprehensive user guides and tutorials to learn how to use Spectrify effectively.</p>
+                <a href="#" class="btn btn-outline">Read Docs</a>
+            </div>
+        </div>
+        
+        <div id="faq" class="faq-section">
+            <h2><span class="golden-text">Frequently Asked</span> Questions</h2>
+            
+            <div class="faq-item">
+                <h3>How do I identify a wine using Spectrify?</h3>
+                <p>Simply take a photo of the wine label using the camera feature in the app. Our AI will analyze the image and provide detailed information about the wine, including origin, vintage, flavor profiles, and food pairing suggestions.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Can I use Spectrify offline?</h3>
+                <p>While some features require an internet connection for real-time wine identification, you can access your saved wine journal and previously identified wines offline. We recommend connecting to the internet for the best experience.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How accurate is the wine identification?</h3>
+                <p>Our AI has been trained on a vast database of wine labels and achieves high accuracy rates. However, the quality of the photo, lighting conditions, and label clarity can affect results. For best results, ensure good lighting and a clear, unobstructed view of the label.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How do I manage my wine cellar?</h3>
+                <p>Use the Cellar Management feature to add wines to your collection, track inventory, set drinking windows, and monitor value appreciation. You can organize wines by region, varietal, or any custom criteria you prefer.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Is my data secure and private?</h3>
+                <p>Yes, we take your privacy seriously. All personal data is encrypted and stored securely. We never share your information with third parties without your explicit consent. You can review our Privacy Policy for detailed information about data handling.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How do I export my wine journal?</h3>
+                <p>You can export your wine journal data in various formats including PDF and CSV. Go to Settings > Export Data to download your complete wine collection and tasting notes.</p>
+            </div>
+        </div>
+        
+        <div class="contact-section">
+            <h2><span class="golden-text">Get in Touch</span></h2>
+            <p>We're here to help you with any questions or concerns</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email Support</h3>
+                    <p>support@spectrify.co.uk</p>
+                    <p>Response within 24 hours</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>Support Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM GMT</p>
+                    <p>Saturday: 10:00 AM - 4:00 PM GMT</p>
+                    <p>Sunday: Closed</p>
+                    <p><strong>Emergency support available 24/7</strong></p>
+                </div>
+            </div>
+            
+            <a href="mailto:support@spectrify.co.uk?subject=Spectrify Support Request" class="btn">Contact Support Team</a>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Spectrify. All rights reserved.</p>
+            <div>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Support from "./pages/Support";
 
 const queryClient = new QueryClient();
 
@@ -152,6 +153,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/support" element={<Support />} />
             
             {/* Special routes for hash navigation that just redirect to the main page with hash */}
             <Route path="/features" element={<Navigate to="/#features" replace />} />
