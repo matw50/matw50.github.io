@@ -69,7 +69,7 @@ const Hero = () => {
                 aria-label="Download on the App Store"
               >
                 <img
-                  src="docs/assets/on_app_store.svg"
+                  src="lovable-uploads/app_store_icon.svg"
                   alt="Download on the App Store"
                   className="h-10 md:h-12 w-auto"
                 />

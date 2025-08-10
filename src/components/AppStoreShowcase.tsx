@@ -3,9 +3,9 @@ import React from "react";
 const APP_STORE_URL = "https://apps.apple.com/gb/app/sommify/id6749514313";
 
 const AppStoreShowcase: React.FC = () => {
-  const iconSrc = "docs/assets/sommify_icon.jpeg";
-  const screenshot1Src = "docs/assets/sommifyscreenshot1.jpeg";
-  const screenshot2Src = "docs/assets/sommifyscreenshot2.jpeg";
+  const iconSrc = "lovable-uploads/sommify_icon.jpeg";
+  const screenshot1Src = "lovable-uploads/screenshot1.png";
+  const screenshot2Src = "lovable-uploads/screenshot2.png";
 
   return (
     <section
@@ -37,7 +37,7 @@ const AppStoreShowcase: React.FC = () => {
                 aria-label="Download on the App Store"
               >
                 <img
-                  src="docs/assets/on_app_store.svg"
+                  src="lovable-uploads/app_store_icon.svg"
                   alt="Download on the App Store"
                   className="h-10 md:h-12 w-auto"
                 />
