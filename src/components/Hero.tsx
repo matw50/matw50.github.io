@@ -41,9 +41,14 @@ const Hero = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="text-center md:text-left space-y-6">
             <div className="inline-block opacity-0 animate-fade-in delay-0">
-              <span className="px-3 py-1 rounded-full text-xs font-medium bg-gold/10 text-gold border border-gold/20">
-                Coming Soon to App Store
-              </span>
+              <a
+                href="https://apps.apple.com/gb/app/sommify/id6749514313"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-full text-xs font-medium bg-gold/10 text-gold border border-gold/20 hover:bg-gold/20 transition-colors"
+              >
+                Now on the App Store
+              </a>
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold font-playfair opacity-0 animate-fade-in delay-1">
@@ -52,15 +57,22 @@ const Hero = () => {
             </h1>
             
             <p className="text-lg md:text-xl text-white/80 max-w-md mx-auto md:mx-0 opacity-0 animate-fade-in delay-2">
-              The ultimate wine companion. Capture, identify, and enjoy the perfect wine every time with our innovative AI technology.
+              AI wine menu scanner and pairings. Snap a photo of any wine menu and get ratings, tasting notes, and personalized pairing suggestions instantly.
             </p>
             
             <div className="pt-4 opacity-0 animate-fade-in delay-3">
               <a 
-                href="#signup" 
-                className="inline-block px-8 py-3 bg-gold text-dark font-medium rounded-full hover:bg-gold-light transition-all duration-300 shadow-lg hover:shadow-gold/20 hover:-translate-y-1"
+                href="https://apps.apple.com/gb/app/sommify/id6749514313" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block transition-transform duration-300 hover:-translate-y-1"
+                aria-label="Download on the App Store"
               >
-                Get Notified at Launch
+                <img
+                  src="docs/assets/on_app_store.svg"
+                  alt="Download on the App Store"
+                  className="h-10 md:h-12 w-auto"
+                />
               </a>
             </div>
           </div>

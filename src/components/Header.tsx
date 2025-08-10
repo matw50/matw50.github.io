@@ -79,6 +79,14 @@ const Header = () => {
           >
             Support
           </a>
+          <a
+            href="https://apps.apple.com/gb/app/sommify/id6749514313"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-sm bg-gold text-dark font-medium px-3 py-1 rounded-full hover:bg-gold-light transition-colors"
+          >
+            App Store
+          </a>
         </nav>
         <div className="md:hidden">
           <button className="text-white">
