@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Woolly is a virtual sheepdog companion for iPhone that remembers the things you tell it.">
+  <meta property="og:title" content="Woolly — A dog that remembers you.">
+  <meta property="og:description" content="A virtual sheepdog companion for people who cannot have a dog right now.">
+  <title>Woolly | Spectrify</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f8f5ee;
+      --muted: rgba(248, 245, 238, .76);
+      --gold: #d5ad61;
+      --line: rgba(213, 173, 97, .28);
+      --background: #17120f;
+      --panel: #211a16;
+      --moss: #344f3d;
+      --cream: #f0e7d1;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #34241a 0, var(--background) 42rem);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+    header, main, footer { width: min(100% - 2rem, 1120px); margin: 0 auto; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 0 1rem;
+    }
+    header a { color: var(--gold); text-decoration: none; }
+    .brand { font-size: 1.2rem; letter-spacing: .02em; }
+    .back-link { color: var(--muted); font-size: .9rem; }
+    .back-link:hover, a:hover { color: var(--gold); }
+    main { padding: 1rem 0 5rem; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr);
+      gap: clamp(2rem, 7vw, 6rem);
+      align-items: center;
+      min-height: 680px;
+      padding: clamp(2rem, 6vw, 5rem) 0 4rem;
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: .35rem .7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--gold);
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1, h2 { line-height: 1.1; }
+    h1 {
+      max-width: 700px;
+      margin: 0 0 1.5rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.5rem, 9vw, 7.3rem);
+      font-weight: 400;
+      letter-spacing: -.055em;
+    }
+    h1 em { color: var(--gold); font-style: normal; }
+    .lead {
+      max-width: 560px;
+      margin: 0 0 2rem;
+      color: var(--muted);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      line-height: 1.6;
+    }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+    .button {
+      display: inline-block;
+      padding: .8rem 1.2rem;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--background);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .button:hover { background: #e7c87e; color: var(--background); }
+    .text-link { color: var(--muted); text-decoration: none; }
+    .text-link:hover { color: var(--gold); }
+    .hero-art { position: relative; }
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 88%;
+      height: 78%;
+      right: -7%;
+      top: 10%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(213, 173, 97, .28), transparent 68%);
+      filter: blur(8px);
+    }
+    .phone {
+      width: min(100%, 360px);
+      margin: 0 auto;
+      padding: .65rem;
+      border: 1px solid rgba(248, 245, 238, .2);
+      border-radius: 2.5rem;
+      background: #0c0b0a;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, .45), 0 0 0 10px rgba(255, 255, 255, .025);
+      transform: rotate(2deg);
+    }
+    .phone img {
+      display: block;
+      width: 100%;
+      border-radius: 2rem;
+    }
+    .phone figcaption {
+      padding: .8rem .3rem .25rem;
+      color: rgba(248, 245, 238, .55);
+      font-size: .75rem;
+      text-align: center;
+    }
+    .rule { height: 1px; background: var(--line); }
+    section { padding: 5.5rem 0; }
+    .section-intro { max-width: 650px; margin-bottom: 2.5rem; }
+    .section-intro h2 {
+      margin: 0 0 1rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      font-weight: 400;
+      letter-spacing: -.04em;
+    }
+    .section-intro p { margin: 0; color: var(--muted); font-size: 1.1rem; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .card {
+      min-height: 220px;
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: rgba(33, 26, 22, .75);
+    }
+    .card-number { color: var(--gold); font-size: .8rem; letter-spacing: .12em; }
+    .card h3 { margin: 2.5rem 0 .5rem; font-size: 1.25rem; }
+    .card p { margin: 0; color: var(--muted); }
+    .story {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(300px, 1.1fr);
+      gap: clamp(2rem, 7vw, 6rem);
+      align-items: center;
+    }
+    .story-copy h2 {
+      margin: 0 0 1.25rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      font-weight: 400;
+      letter-spacing: -.04em;
+    }
+    .story-copy p { color: var(--muted); font-size: 1.05rem; }
+    .story-copy p + p { margin-top: 1.2rem; }
+    .shot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: end; }
+    .shot {
+      margin: 0;
+      padding: .45rem;
+      border: 1px solid rgba(248, 245, 238, .15);
+      border-radius: 1.25rem;
+      background: rgba(255, 255, 255, .04);
+    }
+    .shot:nth-child(2) { transform: translateY(2.5rem); }
+    .shot img { display: block; width: 100%; border-radius: .95rem; }
+    .shot figcaption { padding: .6rem .25rem .2rem; color: var(--muted); font-size: .75rem; }
+    .promise {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: clamp(1.5rem, 5vw, 3rem);
+      border: 1px solid rgba(213, 173, 97, .35);
+      border-radius: 1.25rem;
+      background: linear-gradient(135deg, rgba(52, 79, 61, .55), rgba(33, 26, 22, .85));
+    }
+    .promise h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: -.04em;
+    }
+    .promise p { margin: 0; color: var(--muted); }
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0 0 3rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+    @media (max-width: 760px) {
+      header { padding-top: 1.5rem; }
+      .hero, .story, .promise { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 3rem; }
+      .hero-art { max-width: 360px; margin: 1rem auto 0; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .card h3 { margin-top: 1.5rem; }
+      section { padding: 4rem 0; }
+      .shot-grid { max-width: 460px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">Spectrify</a>
+    <a class="back-link" href="/">Back to the studio</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="eyebrow">A Spectrify product</span>
+        <h1>A dog that <em>remembers you.</em></h1>
+        <p class="lead">
+          Woolly is a virtual sheepdog companion for people who cannot have a dog
+          right now. Talk, walk, play and share the little things. Woolly brings
+          them back when you least expect it.
+        </p>
+        <div class="actions">
+          <a class="button" href="mailto:info@spectrify.co.uk?subject=Woolly">Talk to Spectrify</a>
+          <a class="text-link" href="/woolly-support.html">Visit support&nbsp;→</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <figure class="phone">
+          <img src="lovable-uploads/woolly-main-day.png" alt="Woolly waiting in a sunny garden on an iPhone screen">
+          <figcaption>An ordinary day with Woolly.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <section>
+      <div class="section-intro">
+        <h2>Not a checklist. A relationship.</h2>
+        <p>
+          Woolly is built around the small, recognisable things a dog does: noticing
+          you, looking for you, getting excited to play, and settling close again.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <span class="card-number">01 / PRESENCE</span>
+          <h3>Woolly has a point of view.</h3>
+          <p>Energy, mood and personality shape how your dog moves, speaks and responds to the way you show up.</p>
+        </article>
+        <article class="card">
+          <span class="card-number">02 / MEMORY</span>
+          <h3>The little things come back.</h3>
+          <p>Tell Woolly something real and it can become part of your shared Memory Book — ready to correct or forget.</p>
+        </article>
+        <article class="card">
+          <span class="card-number">03 / PLAY</span>
+          <h3>Care has an emotional payoff.</h3>
+          <p>Feed, walk, pet, play and talk. The dog’s body language answers first, and the numbers stay in the background.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="story-copy">
+        <h2>It starts with “hello”.</h2>
+        <p>
+          Choose a pup with its own coat, size and temperament. Give it a name.
+          From there, Woolly grows through the moments you make together — from a
+          first walk to a familiar route, a found treasure or a question asked at
+          exactly the right time.
+        </p>
+        <p>
+          Your dog lives on your iPhone, with memories kept on-device and optional
+          private iCloud backup. No ads. No tracking. Just a little companion with
+          somewhere to be when you open the app.
+        </p>
+      </div>
+
+      <div class="shot-grid">
+        <figure class="shot">
+          <img src="lovable-uploads/woolly-talk-panel.png" alt="Woolly Talk panel on an iPhone">
+          <figcaption>A conversation with your dog.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="lovable-uploads/woolly-memory-book.png" alt="Woolly Memory Book on an iPhone">
+          <figcaption>A life made of small moments.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="promise">
+        <h2>Made for the dog-shaped space in your life.</h2>
+        <p>
+          Woolly is for the renter, the allergy sufferer, the person whose hours
+          are wrong, and anyone who wants a dog but cannot have one yet. It is a
+          gentle relationship, not a guilt machine: Woolly never dies, and it does
+          not punish you for having a life.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Spectrify. Woolly is a Spectrify product.</span>
+    <span><a href="/woolly-support.html">Support</a> · <a href="/woolly-privacy.html">Privacy</a></span>
+  </footer>
+</body>
+</html>
