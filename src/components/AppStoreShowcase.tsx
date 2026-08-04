@@ -4,8 +4,8 @@ const APP_STORE_URL = "https://apps.apple.com/gb/app/sommify/id6749514313";
 
 const AppStoreShowcase: React.FC = () => {
   const iconSrc = "lovable-uploads/sommify_icon.jpeg";
-  const screenshot1Src = "lovable-uploads/screenshot1.png";
-  const screenshot2Src = "lovable-uploads/screenshot2.png";
+  const screenshot1Src = "lovable-uploads/sommify-appstore-capture.webp";
+  const screenshot2Src = "lovable-uploads/sommify-appstore-result.webp";
 
   return (
     <section
@@ -81,4 +81,3 @@ const AppStoreShowcase: React.FC = () => {
 };
 
 export default AppStoreShowcase;
-

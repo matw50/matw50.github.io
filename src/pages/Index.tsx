@@ -1,101 +1,193 @@
 import React, { useEffect } from "react";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import AppStoreShowcase from "@/components/AppStoreShowcase";
-import Features from "@/components/Features";
-import EmailSignup from "@/components/EmailSignup";
-import Footer from "@/components/Footer";
+
+const products = [
+  {
+    name: "Woolly",
+    label: "A relationship in your pocket",
+    description:
+      "A virtual sheepdog companion for people who cannot have a dog right now. Woolly notices, remembers and grows with you.",
+    image: "lovable-uploads/woolly-main-day.png",
+    imageAlt: "Woolly waiting in a sunny garden on an iPhone",
+    href: "/woolly.html",
+    action: "Meet Woolly",
+    accent: "moss",
+  },
+  {
+    name: "Sommify",
+    label: "Wine, with a little more confidence",
+    description:
+      "A thoughtful wine companion that helps you capture, understand and enjoy the bottle in front of you.",
+    image: "lovable-uploads/sommify-appstore-menu.webp",
+    imageAlt: "Sommify scanning a wine menu on an iPhone",
+    href: "/sommify.html",
+    action: "Discover Sommify",
+    accent: "gold",
+  },
+];
 
 const Index = () => {
   useEffect(() => {
-    // Update document title
-    document.title = "Sommify by Spectrify — Now on the App Store";
+    document.title = "Spectrify — Thoughtful digital products";
   }, []);
 
   return (
-    <div className="min-h-screen bg-dark text-white overflow-hidden">
-      <Header />
-      {/* App Store promo banner */}
-      <section className="mt-16 md:mt-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <a
-            href="https://apps.apple.com/gb/app/sommify/id6749514313"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full rounded-xl border border-gold/30 bg-gold/10 hover:bg-gold/15 transition-colors"
-          >
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 px-5 py-3">
-              <div className="flex items-center gap-3 text-gold">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                  <path d="M16.365 1.43c.083-.103.16-.213.229-.33a5.3 5.3 0 01-1.35.389 2.69 2.69 0 001.163-1.53 5.34 5.34 0 01-1.7.65A2.673 2.673 0 0013.1 0c-1.48 0-2.68 1.201-2.68 2.681 0 .21.023.417.068.613A7.6 7.6 0 015.1.275a2.68 2.68 0 00-.363 1.348c0 .93.473 1.75 1.19 2.23a2.663 2.663 0 01-1.215-.336v.034c0 1.3.924 2.383 2.15 2.63a2.69 2.69 0 01-1.21.046c.341 1.064 1.328 1.84 2.5 1.862A5.368 5.368 0 014.8 9.51 7.57 7.57 0 009.9 11c4.72 0 7.3-3.913 7.3-7.305 0-.112-.003-.224-.008-.334A5.212 5.212 0 0018 1.76a5.23 5.23 0 01-1.635.448z" />
-                </svg>
-                <span className="text-sm font-medium">Sommify is now on the App Store</span>
-              </div>
-              <div className="text-xs text-white/70">
-                Free • iOS 14.0+ • Food & Drink • 17+
-              </div>
-            </div>
+    <div className="min-h-screen overflow-hidden bg-dark text-white">
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/5 bg-dark-deep/85 px-6 py-4 backdrop-blur-md md:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between">
+          <a href="/" className="font-playfair text-2xl font-bold tracking-tight text-gold">
+            Spectrify
           </a>
+          <nav className="hidden items-center gap-8 md:flex">
+            <a href="#products" className="text-sm text-white/75 transition-colors hover:text-gold">
+              Products
+            </a>
+            <a href="#approach" className="text-sm text-white/75 transition-colors hover:text-gold">
+              Approach
+            </a>
+            <a href="/support" className="text-sm text-white/75 transition-colors hover:text-gold">
+              Support
+            </a>
+          </nav>
         </div>
-      </section>
-      <Hero />
-      <AppStoreShowcase />
-      <Features />
-      
-      <section id="about" className="py-24 px-4 relative">
-        <div className="absolute inset-0" style={{ 
-          background: "linear-gradient(to bottom, #1A1A1A 0%, #121212 100%)"
-        }}></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
-              <div className="animated-border-box">
-                <div className="glass p-1">
-                  <div className="relative overflow-hidden rounded-lg">
-                    <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 to-transparent opacity-70"></div>
-                    <img
-                      src="lovable-uploads/4c32ddf5-62a6-4870-bfc5-a7e09b554e08.png"
-                      alt="Spectrify Logo"
-                      className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            
+      </header>
 
-
-            <div className="text-center md:text-left order-1 md:order-2">
-              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-gold/10 text-gold border border-gold/20 mb-4">
-                About Spectrify
-              </span>
-              
-              <h2 className="text-3xl md:text-4xl font-bold font-playfair mb-6">
-                Crafting <span className="golden-text">Digital Elegance</span> Through Innovation
-              </h2>
-              
-              <p className="text-white/70 mb-6 leading-relaxed">
-                Spectrify is a premium design and development studio dedicated to creating sophisticated digital experiences. Our flagship application, Sommify, represents our commitment to combining beautiful design with practical utility.
+      <main>
+        <section className="relative px-4 pb-24 pt-40 md:pb-36 md:pt-52">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_15%,rgba(213,173,97,0.18),transparent_32rem)]" />
+          <div className="relative mx-auto max-w-7xl">
+            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
+              Independent design &amp; development studio
+            </p>
+            <h1 className="max-w-5xl font-playfair text-5xl font-normal leading-[0.98] tracking-[-0.045em] md:text-8xl">
+              Digital products with a little more <span className="golden-text">feeling.</span>
+            </h1>
+            <div className="mt-8 grid max-w-4xl gap-8 md:grid-cols-[1fr_0.75fr] md:items-end">
+              <p className="text-xl leading-relaxed text-white/70 md:text-2xl">
+                Spectrify makes calm, characterful apps for the moments people want to
+                keep: a bottle shared, a dog missed, a small ritual that becomes part
+                of the day.
               </p>
-              
-              <p className="text-white/70 mb-8 leading-relaxed">
-                Founded by a team of passionate designers and engineers, we believe that technology should be both beautiful and functional. Every pixel, every interaction, and every feature is crafted with intention and care.
-              </p>
-              
               <a
-                href="#signup"
-                className="inline-block px-6 py-3 border border-gold/50 text-gold rounded-full hover:bg-gold hover:text-dark-deep transition-all duration-300"
+                href="#products"
+                className="inline-flex w-fit items-center rounded-full border border-gold/60 px-5 py-3 text-sm font-semibold text-gold transition-colors hover:bg-gold hover:text-dark"
               >
-                Join Our Journey
+                Explore our products <span className="ml-3">↓</span>
               </a>
             </div>
           </div>
+        </section>
+
+        <section id="products" className="scroll-mt-20 border-t border-white/10 px-4 py-24 md:py-32">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-12 max-w-2xl">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-gold">The portfolio</p>
+              <h2 className="font-playfair text-4xl font-normal tracking-[-0.035em] md:text-6xl">
+                Two products. One point of view.
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-white/65">
+                We build useful products that earn a place in your life through craft,
+                not noise.
+              </p>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              {products.map((product) => (
+                <a
+                  key={product.name}
+                  href={product.href}
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-500 hover:-translate-y-1 hover:border-gold/40 hover:bg-white/[0.07] md:p-6"
+                >
+                  <div className="relative mb-7 flex h-[300px] items-center justify-center overflow-hidden rounded-xl bg-black/20 md:h-[390px]">
+                    <div
+                      className={`absolute inset-0 ${product.accent === "moss" ? "bg-[radial-gradient(circle_at_50%_80%,rgba(52,79,61,0.8),transparent_65%)]" : "bg-[radial-gradient(circle_at_50%_80%,rgba(213,173,97,0.24),transparent_65%)]"}`}
+                    />
+                    <img
+                      src={product.image}
+                      alt={product.imageAlt}
+                      className={`relative max-h-[92%] w-auto max-w-[76%] object-contain shadow-2xl transition-transform duration-700 group-hover:scale-[1.03] ${product.name === "Woolly" ? "rounded-[2rem]" : "max-h-48 rounded-3xl md:max-h-64"}`}
+                    />
+                  </div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">{product.label}</p>
+                  <div className="mt-3 flex items-end justify-between gap-5">
+                    <div>
+                      <h3 className="font-playfair text-4xl font-normal">{product.name}</h3>
+                      <p className="mt-2 max-w-md leading-relaxed text-white/65">{product.description}</p>
+                    </div>
+                    <span className="shrink-0 text-2xl text-gold transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </div>
+                  <p className="mt-6 text-sm font-semibold text-gold">{product.action}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="approach" className="scroll-mt-20 border-t border-white/10 px-4 py-24 md:py-32">
+          <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-start">
+            <div>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-gold">Our approach</p>
+              <h2 className="font-playfair text-4xl font-normal tracking-[-0.035em] md:text-6xl">
+                Make it useful. Make it human.
+              </h2>
+            </div>
+            <div className="grid gap-8 border-l border-gold/25 pl-6 md:grid-cols-2 md:gap-x-12 md:pl-10">
+              <div>
+                <p className="mb-2 text-lg font-semibold text-white">Character over clutter</p>
+                <p className="leading-relaxed text-white/60">
+                  Every interaction should have a reason to exist and a tone you can feel.
+                </p>
+              </div>
+              <div>
+                <p className="mb-2 text-lg font-semibold text-white">Small moments, well made</p>
+                <p className="leading-relaxed text-white/60">
+                  We focus on the details people return to, not feature lists they forget.
+                </p>
+              </div>
+              <div>
+                <p className="mb-2 text-lg font-semibold text-white">Trust by default</p>
+                <p className="leading-relaxed text-white/60">
+                  Calm products respect attention, explain themselves and keep promises.
+                </p>
+              </div>
+              <div>
+                <p className="mb-2 text-lg font-semibold text-white">Built for the long term</p>
+                <p className="leading-relaxed text-white/60">
+                  We would rather make one enduring product than ten disposable ones.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-white/10 px-4 py-24 md:py-32">
+          <div className="mx-auto flex max-w-7xl flex-col gap-7 rounded-2xl border border-gold/30 bg-gold/[0.06] p-8 md:flex-row md:items-end md:justify-between md:p-12">
+            <div>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-gold">Keep in touch</p>
+              <h2 className="max-w-2xl font-playfair text-4xl font-normal tracking-[-0.035em] md:text-5xl">
+                Good products are worth talking about.
+              </h2>
+            </div>
+            <a
+              href="mailto:info@spectrify.co.uk?subject=Spectrify"
+              className="inline-flex w-fit shrink-0 items-center rounded-full bg-gold px-5 py-3 text-sm font-semibold text-dark transition-colors hover:bg-gold-light"
+            >
+              info@spectrify.co.uk <span className="ml-3">↗</span>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-white/10 bg-dark-deep px-4 py-10 text-white/60">
+        <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm md:flex-row md:items-center md:justify-between">
+          <span>© {new Date().getFullYear()} Spectrify. Thoughtful digital products.</span>
+          <div className="flex gap-5">
+            <a href="/woolly.html" className="transition-colors hover:text-gold">Woolly</a>
+            <a href="/sommify.html" className="transition-colors hover:text-gold">Sommify</a>
+            <a href="/woolly-support.html" className="transition-colors hover:text-gold">Support</a>
+            <a href="/woolly-privacy.html" className="transition-colors hover:text-gold">Privacy</a>
+          </div>
         </div>
-      </section>
-      
-      <EmailSignup />
-      <Footer />
+      </footer>
     </div>
   );
 };

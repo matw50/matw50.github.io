@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Index from "./pages/Index";
+import Sommify from "./pages/Sommify";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Support from "./pages/Support";
@@ -152,6 +153,7 @@ const App = () => {
           <InitialHashHandler />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/sommify" element={<Sommify />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/support" element={<Support />} />
             

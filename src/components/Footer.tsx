@@ -43,13 +43,10 @@ const Footer = () => {
               <h4 className="text-white font-medium mb-3">Products</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="https://apps.apple.com/gb/app/sommify/id6749514313" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Sommify on the App Store</a>
+                  <a href="/woolly.html" className="hover:text-gold transition-colors">Woolly</a>
                 </li>
                 <li>
-                  <Link to="/portfolio" className="hover:text-gold transition-colors">Our Portfolio</Link>
-                </li>
-                <li>
-                  <Link to="/roadmap" className="hover:text-gold transition-colors">Roadmap</Link>
+                  <a href="/sommify.html" className="hover:text-gold transition-colors">Sommify</a>
                 </li>
               </ul>
             </div>
