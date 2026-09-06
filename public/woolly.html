@@ -180,6 +180,9 @@
     .shot:nth-child(2) { transform: translateY(2.5rem); }
     .shot img { display: block; width: 100%; border-radius: .95rem; }
     .shot figcaption { padding: .6rem .25rem .2rem; color: var(--muted); font-size: .75rem; }
+    .reel { margin: 2.25rem auto 0; max-width: 300px; }
+    .reel video { display: block; width: 100%; border-radius: 1.4rem; background: #0d0f0c; }
+    .reel figcaption { padding: .7rem .25rem .2rem; color: var(--muted); font-size: .75rem; text-align: center; }
     .promise {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -311,6 +314,23 @@
           <figcaption>A life made of small moments.</figcaption>
         </figure>
       </div>
+    </section>
+
+    <section>
+      <div class="section-intro">
+        <h2>Half a minute with Woolly.</h2>
+        <p>
+          Every frame is drawn by hand in SwiftUI Canvas — no game engine, no
+          asset packs. The mood, the energy and the way it moves all come from
+          the dog's own state, so what you are watching is the character
+          thinking rather than a video loop.
+        </p>
+      </div>
+      <figure class="reel">
+        <video src="woolly-demo.mp4" controls playsinline preload="metadata"
+               poster="woolly-demo-poster.jpg"></video>
+        <figcaption>An evening in: the garden, a conversation, and a game of fetch.</figcaption>
+      </figure>
     </section>
 
     <section>
