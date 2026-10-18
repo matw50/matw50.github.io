@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Woolly, the virtual sheepdog companion for iPhone, responds when someone talks about suicide, self-harm or abuse, and how it protects younger players.">
+  <title>Woolly Crisis and Safety Protocol | Spectrify</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f8f5ee;
+      --muted: rgba(248, 245, 238, .76);
+      --gold: #d5ad61;
+      --line: rgba(213, 173, 97, .28);
+      --background: #17120f;
+      --panel: #211a16;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #34241a 0, var(--background) 42rem);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+    header, main, footer { width: min(100% - 2rem, 840px); margin: 0 auto; }
+    header { padding: 3rem 0 1rem; }
+    header a { color: var(--gold); text-decoration: none; }
+    main {
+      margin-top: 1rem;
+      margin-bottom: 3rem;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      background: rgba(33, 26, 22, .88);
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+    }
+    h1, h2 { line-height: 1.2; }
+    h1 { margin: 0 0 .5rem; font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { margin: 2.25rem 0 .75rem; color: var(--gold); font-size: 1.3rem; }
+    p, li { color: var(--muted); }
+    ul { padding-left: 1.35rem; }
+    li { margin-bottom: .4rem; }
+    a { color: var(--gold); }
+    strong { color: var(--ink); }
+    .date { color: var(--muted); margin-top: 0; }
+    .notice {
+      margin: 1.5rem 0;
+      padding: 1rem 1.1rem;
+      border-left: 3px solid var(--gold);
+      background: rgba(213, 173, 97, .08);
+      color: var(--muted);
+    }
+    .notice p { margin: .25rem 0; }
+    footer { padding: 0 0 3rem; color: var(--muted); font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">Spectrify</a>
+  </header>
+
+  <main>
+    <h1>Woolly Crisis and Safety Protocol</h1>
+    <p class="date">Last updated 18 October 2026</p>
+
+    <div class="notice">
+      <p><strong>If you need help now:</strong></p>
+      <p>In the UK, call Samaritans free on <a href="tel:116123">116 123</a>, day or night (<a href="https://www.samaritans.org">samaritans.org</a>).</p>
+      <p>In the US, call or text <a href="tel:988">988</a>, the Suicide &amp; Crisis Lifeline (<a href="https://988lifeline.org">988lifeline.org</a>).</p>
+      <p>In an emergency, call 999 in the UK or 911 in the US.</p>
+    </div>
+
+    <p>
+      Woolly is a virtual sheepdog companion for iPhone. When you talk to your
+      dog, his replies are made by AI (a large language model), not by a
+      person. This page explains what the app does when someone talks about
+      suicide, self-harm or abuse, how it keeps harmful replies from being
+      shown, and how it protects younger players. It is published as
+      California’s companion chatbot law asks (Business and Professions Code
+      section 22602(b)(2)).
+    </p>
+
+    <h2>When someone says they want to hurt themselves, or are being hurt</h2>
+    <p>
+      Every message is checked on the phone before anything is sent. A
+      message that says the player wants to end their life or hurt
+      themselves, that someone is hurting or abusing them, or that they don’t
+      feel safe at home, is answered by the app, not the dog:
+    </p>
+    <ul>
+      <li>
+        A calm card appears with one line of care and two help lines:
+        Samaritans (UK), 116 123, free, day or night, with a button to call;
+        and the 988 Suicide &amp; Crisis Lifeline (US), with buttons to call
+        or text. The player’s own country’s line comes first. The card ends:
+        “Or talk to someone you trust.”
+      </li>
+      <li>The message is never sent to the AI, and no AI reply is made. The dog stays close and quiet; he never makes a joke of it.</li>
+      <li>
+        The message stays on the player’s screen, but it is kept out of
+        everything the AI sees later: the conversation sent with later
+        messages, and what Woolly remembers.
+      </li>
+      <li>No record that the card was shown, and never the words, is sent anywhere.</li>
+    </ul>
+
+    <h2>Keeping harmful replies from being shown</h2>
+    <ul>
+      <li>
+        The AI is given a narrow part to play: a dog, in short replies.
+      </li>
+      <li>
+        A list of words and phrases covering violence, sexual content,
+        self-harm and hate speech is checked on the phone. A player’s message
+        that matches it is never sent to the AI; the dog just looks confused.
+      </li>
+      <li>
+        The AI’s reply is checked word by word as it arrives. A listed word is
+        never shown: the reply stops and is replaced with a harmless dog
+        action, such as a tilt of the head.
+      </li>
+      <li>
+        The list is checked against thousands of ordinary lines, so that
+        everyday chat (“oh shoot”, “did you hurt yourself?”) isn’t caught by
+        mistake. From Woolly 0.3.0 (November 2026), it covers about 300 terms,
+        and slurs are stored only in a form that can’t be read back as words.
+      </li>
+    </ul>
+
+    <h2>Younger players</h2>
+    <p>
+      Woolly is for people aged 13 and over. An age gate asks for the year of
+      birth before any data is collected. Whether a player is under 18 is kept only
+      on their phone and is never sent anywhere.
+    </p>
+    <ul>
+      <li>For a player under 18, their first conversation says that Woolly is an AI dog, made by a computer, not a person.</li>
+      <li>For a player under 18, the dog never asks them to buy anything; offers appear in the app’s own plain voice.</li>
+      <li>
+        The AI makes short text replies only, never pictures. Sexual words and
+        phrases are blocked both in what a player sends and in what the AI
+        replies, so the AI can’t tell a player to take part in sexual
+        activity.
+      </li>
+    </ul>
+    <p>From Woolly 0.3.0 (November 2026):</p>
+    <ul>
+      <li>
+        The Talk panel always says, under the message box, that the dog’s
+        replies are made by AI, not a person, and that AI companions may not
+        be suitable for some minors.
+      </li>
+      <li>
+        A player under 18 is reminded at least every three hours, while they
+        keep talking, to take a break, and that the dog is an AI, not a
+        person. The reminder is on by default and can’t be turned off.
+      </li>
+    </ul>
+
+    <h2>Questions</h2>
+    <p>
+      Email us at <a href="mailto:info@spectrify.co.uk">info@spectrify.co.uk</a>.
+      See also <a href="/woolly-support.html">Woolly Support</a> and the
+      <a href="/woolly-privacy.html">Woolly Privacy Policy</a>.
+    </p>
+  </main>
+
+  <footer>
+    © 2026 Spectrify Ltd · <a href="/woolly.html">Woolly</a> · <a href="/woolly-privacy.html">Privacy Policy</a>
+  </footer>
+</body>
+</html>
