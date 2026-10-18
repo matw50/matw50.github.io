@@ -117,7 +117,8 @@
       box-shadow: 0 28px 80px rgba(0, 0, 0, .45), 0 0 0 10px rgba(255, 255, 255, .025);
       transform: rotate(2deg);
     }
-    .phone img {
+    .phone img,
+    .phone video {
       display: block;
       width: 100%;
       border-radius: 2rem;
@@ -252,7 +253,9 @@
 
       <div class="hero-art">
         <figure class="phone">
-          <img src="lovable-uploads/woolly-main-day.png" alt="Woolly waiting in a sunny garden on an iPhone screen">
+          <video class="hero-loop" src="woolly-demo.mp4" poster="lovable-uploads/woolly-main-day.png"
+                 autoplay muted loop playsinline preload="metadata"
+                 aria-label="Woolly in his sunny garden on an iPhone screen: a memory, a game of fetch and a walk"></video>
           <figcaption>An ordinary day with Woolly.</figcaption>
         </figure>
       </div>
@@ -356,5 +359,27 @@
     <span>© 2026 Spectrify. Woolly is a Spectrify product.</span>
     <span><a href="/woolly-support.html">Support</a> · <a href="/woolly-privacy.html">Privacy</a></span>
   </footer>
+  <script>
+    // Each share card in the app links here with ?s=<card> (#186). The App
+    // Store badge carries it on as the campaign token ct=share-<card>, so
+    // App Store Connect counts installs per card. Anything else keeps
+    // woolly-web.
+    (function () {
+      var cards = ["birth", "memory", "card", "recall", "trick", "growth", "look"];
+      var s = new URLSearchParams(window.location.search).get("s");
+      if (s && cards.indexOf(s) >= 0) {
+        document.querySelectorAll("a.appstore-badge").forEach(function (a) {
+          a.href = a.href.replace("ct=woolly-web", "ct=share-" + s);
+        });
+      }
+      // The hero's dog moves, unless the visitor asked for less motion:
+      // then it stays the still.
+      var loop = document.querySelector("video.hero-loop");
+      if (loop && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        loop.removeAttribute("autoplay");
+        loop.pause();
+      }
+    })();
+  </script>
 </body>
 </html>
